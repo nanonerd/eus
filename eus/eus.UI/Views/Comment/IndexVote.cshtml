@@ -1,0 +1,26 @@
+﻿@model Domain.Vote.CommentViewModel
+
+@{
+    ViewBag.Title = "Comments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.React("CommentBox", new 
+    {
+        initialComments = Model.CommentModelList,
+        topicID = Model.TopicID,
+        topicTitle = Model.TopicTitle,
+        answerID = Model.AnswerID,
+        answerTitle = Model.AnswerTitle,
+        answerTitleURL = Model.AnswerTitleURL,
+        topicTitleURL = Model.TopicTitleURL,
+        baseURL = Model.BaseURL,             
+        userID = ViewBag.UserID   
+    })
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="~/Scripts/internal/vote/comments.jsx"></script>
+    @Html.ReactInitJavaScript()
+}
+

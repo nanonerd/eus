@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - eusVille</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")    
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("eusVille (beta)", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", new { area = "", controller = "Home" })</li>
+                    <li>@Html.ActionLink("Vote", "Index", new { area = "Vote", controller="Home"})</li>
+                    <li>@Html.ActionLink("About", "About", new { area = "", controller="Home" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", new { area = "", controller = "Home" })</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <br/><br/><br/>        
+    </div>
+    <footer>
+        <p>
+            <img src="~/Content/Images/peach_30x24.jpg" />&nbsp;&nbsp;Code is organic, freshly grown in peachVille, USA - &copy;@DateTime.Now.Year, eusVille
+        </p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/eusCommon")
+
+    @Scripts.Render("~/bundles/react")
+    @Scripts.Render("~/bundles/main")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

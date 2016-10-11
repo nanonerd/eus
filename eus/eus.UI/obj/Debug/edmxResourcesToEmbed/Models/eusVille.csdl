@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eusVilleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cork_HousingType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TypePostID" Type="Int64" />
+    <Property Name="ImageMain" Type="Int32" />
+    <Property Name="ImageCount" Type="Int32" />
+    <Property Name="Orig1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Orig2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Orig3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Orig4" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Orig5" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Orig6" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Orig7" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Orig8" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Thumb1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Thumb2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Thumb3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Thumb4" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Thumb5" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Thumb6" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Thumb7" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Thumb8" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Display1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Display2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Display3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Display4" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Display5" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Display6" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Display7" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Display8" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Cork_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Category" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SubCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Cork_PostHousing">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="Details" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CatID" Type="Int32" />
+    <Property Name="SubCatID" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LocationTown" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocationCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="Int32" />
+    <Property Name="Zip4" Type="Int32" />
+    <Property Name="Country" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="VilleID" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Details" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AdType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Beds" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Bath" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Laundry" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Parking" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SquareFt" Type="Int32" />
+    <Property Name="Furnished" Type="Boolean" />
+    <Property Name="CatsOk" Type="Boolean" />
+    <Property Name="DogsOk" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Expired" Type="Boolean" />
+    <Property Name="Flag" Type="Boolean" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="7" />
+    <Property Name="Views" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="eusVilleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cork_HousingType" EntityType="Self.Cork_HousingType" />
+    <EntitySet Name="Images" EntityType="Self.Image" />
+    <EntitySet Name="Cork_Category" EntityType="Self.Cork_Category" />
+    <EntitySet Name="Cork_PostHousing" EntityType="Self.Cork_PostHousing" />
+    <FunctionImport Name="GetCategories" />
+    <FunctionImport Name="GetHousingType" />
+  </EntityContainer>
+</Schema>

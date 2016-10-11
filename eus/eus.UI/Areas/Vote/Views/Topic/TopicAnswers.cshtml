@@ -1,0 +1,43 @@
+﻿@model List<eus.UI.Models.Answer>
+@*@model List<eus.UI.Models.Answer>*@
+
+@using System.Web.Optimization.React;
+
+@{
+    ViewBag.Title = "TopicAnswers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>
+    @ViewBag.TopicTitle <span style="font-size:x-large">- Top 8</span>
+    @if (Convert.ToInt32(ViewBag.UserId) == 0)
+    {        
+        <span style ="font-size:small">&nbsp;&nbsp;&nbsp;@Html.ActionLink("[Login to create answer]", "Login", new { area = "", controller = "Account" })</span>
+    }
+    else
+    {
+        <span style="font-size:large">&nbsp;&nbsp;&nbsp;(@Html.ActionLink("create Answer", "Create", new { controller = "Answers", id = ViewBag.TopicId }))</span>
+    }
+</h2>
+<br/>
+
+<div id="topicAnswers"></div>
+
+@if (Model.Count > 0)  // Render react view only if there are answers to display
+{
+    @Html.React("TopicAnswers", new
+    {
+        initialAnswers = Model,
+        userID = (string)ViewBag.UserID,
+        topicTitle = ViewBag.TopicTitle,
+        topicID = ViewBag.TopicID,
+        baseUrl = ViewBag.BaseUrl,
+        url = Url.Action("TopicGet", new { Filter = "AnswersGet", FilterData = ViewBag.TopicID })
+    })
+}
+    
+@section scripts{    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="~/Scripts/internal/vote/topicAnswers.jsx"></script>
+    @Html.ReactInitJavaScript() 
+}

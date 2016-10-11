@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eusVoteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerID" />
+    </Key>
+    <Property Name="AnswerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TopicID" Type="Int32" />
+    <Property Name="Answer1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AnswerTitleURL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RatingScore" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="RatingCount" Type="Int32" />
+    <Property Name="CommentCount" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CategoryList">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AnswerID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageURL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ReplyTo" Type="Int32" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="RatingID" />
+    </Key>
+    <Property Name="RatingID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="AnswerID" Type="Int32" />
+    <Property Name="Rating1" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="eusVoteEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Answers" EntityType="Self.Answer" />
+    <EntitySet Name="CategoryLists" EntityType="Self.CategoryList" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Ratings" EntityType="Self.Rating" />
+    <FunctionImport Name="GetTopicAnswers" ReturnType="Collection(eusVoteModel.GetTopicAnswers_Result)">
+      <Parameter Name="TopicID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Topics" EntityType="eusVoteModel.Topic" />
+  </EntityContainer>
+  <ComplexType Name="GetTopicAnswers_Result">
+    <Property Type="Int64" Name="UserID" Nullable="true" />
+    <Property Type="Int32" Name="AnswerID" Nullable="true" />
+    <Property Type="Int32" Name="TopicID" Nullable="true" />
+    <Property Type="String" Name="AnswerTitle" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AnswerDetail" Nullable="true" />
+    <Property Type="Decimal" Name="RatingScore" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="RatingCount" Nullable="true" />
+    <Property Type="Int32" Name="CommentCount" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Topic">
+    <Key>
+      <PropertyRef Name="TopicID" />
+    </Key>
+    <Property Name="TopicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Topic1" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="TopicTitleURL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Search" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Tags" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AnswerCount" Type="Int32" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>

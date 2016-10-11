@@ -1,0 +1,882 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eusCommonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin_ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Details" Type="varchar(max)" Nullable="false" />
+          <Property Name="ErrorLocation" Type="varchar" MaxLength="100" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="10" />
+          <Property Name="IsOpen" Type="bit" />
+        </EntityType>
+        <EntityType Name="Admin_Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Details" Type="varchar(max)" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="10" />
+          <Property Name="Status" Type="varchar" MaxLength="10" />
+          <Property Name="IsError" Type="bit" />
+        </EntityType>
+        <EntityType Name="Admin_ToDo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="Priority" Type="varchar" MaxLength="20" />
+          <Property Name="Detail" Type="varchar" MaxLength="2000" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="TimeStamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="30" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Geo_Cities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VilleId" Type="int" Nullable="false" />
+          <Property Name="Town" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="30" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="3" />
+          <Property Name="CityPopulation" Type="int" />
+          <Property Name="CityAsianPopulation" Type="int" />
+          <Property Name="PostalCodePopulation" Type="int" />
+        </EntityType>
+        <EntityType Name="Geo_Countries">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VilleId" Type="int" />
+        </EntityType>
+        <EntityType Name="Geo_Ville">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eusCommon.dbo.Geo_ZipCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Geo_ZipCodes">
+          <Key>
+            <PropertyRef Name="ZipCode" />
+          </Key>
+          <Property Name="ZipCode" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="35" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="County" Type="varchar" MaxLength="45" />
+          <Property Name="AreaCode" Type="varchar" MaxLength="55" />
+          <Property Name="CityType" Type="char" MaxLength="1" />
+          <Property Name="CityAliasAbbreviation" Type="varchar" MaxLength="13" />
+          <Property Name="CityAliasName" Type="varchar" MaxLength="35" />
+          <Property Name="Latitude" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="Longitude" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="TimeZone" Type="char" MaxLength="2" />
+          <Property Name="Elevation" Type="int" />
+          <Property Name="CountyFIPS" Type="char" MaxLength="5" />
+          <Property Name="DayLightSaving" Type="char" MaxLength="1" />
+          <Property Name="PreferredLastLineKey" Type="varchar" MaxLength="10" />
+          <Property Name="ClassificationCode" Type="char" MaxLength="1" />
+          <Property Name="MultiCounty" Type="char" MaxLength="1" />
+          <Property Name="StateFIPS" Type="char" MaxLength="2" />
+          <Property Name="CityStateKey" Type="char" MaxLength="6" />
+          <Property Name="CityAliasCode" Type="varchar" MaxLength="5" />
+          <Property Name="PrimaryRecord" Type="char" MaxLength="1" />
+          <Property Name="CityMixedCase" Type="varchar" MaxLength="35" />
+          <Property Name="CityAliasMixedCase" Type="varchar" MaxLength="35" />
+          <Property Name="StateANSI" Type="varchar" MaxLength="2" />
+          <Property Name="CountyANSI" Type="varchar" MaxLength="3" />
+          <Property Name="FacilityCode" Type="varchar" MaxLength="1" />
+          <Property Name="CityDeliveryIndicator" Type="varchar" MaxLength="1" />
+          <Property Name="CarrierRouteRateSortation" Type="varchar" MaxLength="1" />
+          <Property Name="FinanceNumber" Type="varchar" MaxLength="6" />
+          <Property Name="UniqueZIPName" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="User_Coins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Gold" Type="int" />
+          <Property Name="Silver" Type="int" />
+          <Property Name="Bronze" Type="int" />
+          <Property Name="Copper" Type="int" />
+        </EntityType>
+        <EntityType Name="User_Flag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlagType" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="WhereAt" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User_Location">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Region" Type="smallint" />
+          <Property Name="VilleOne" Type="smallint" />
+          <Property Name="VilleTwo" Type="smallint" />
+          <Property Name="Add1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Add2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Town" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="User_Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="60" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="30" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone2" Type="varchar" MaxLength="30" />
+          <Property Name="Phone2Confirmed" Type="bit" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="Birthday" Type="varchar" MaxLength="10" />
+          <Property Name="BirthYear" Type="int" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="200" />
+          <Property Name="ThumbURL" Type="varchar" MaxLength="200" />
+          <Property Name="Ethnicity1" Type="varchar" MaxLength="30" />
+          <Property Name="Ethnicity2" Type="varchar" MaxLength="30" />
+          <Property Name="Language1" Type="varchar" MaxLength="5" />
+          <Property Name="Language2" Type="varchar" MaxLength="5" />
+          <Property Name="IsComplete" Type="bit" />
+          <Property Name="IsApproved" Type="bit" />
+        </EntityType>
+        <EntityType Name="User_TransactionsCoin">
+          <Key>
+            <PropertyRef Name="TransId" />
+          </Key>
+          <Property Name="TransId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="CoinType" Type="int" />
+          <Property Name="TransferToUserID" Type="int" Nullable="false" />
+          <Property Name="Details" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="eusCommonModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin_ErrorLog" EntityType="Self.Admin_ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin_Log" EntityType="Self.Admin_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin_ToDo" EntityType="Self.Admin_ToDo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Geo_Cities" EntityType="Self.Geo_Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Geo_Countries" EntityType="Self.Geo_Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Geo_Ville" EntityType="Self.Geo_Ville" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Coins" EntityType="Self.User_Coins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Flag" EntityType="Self.User_Flag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Location" EntityType="Self.User_Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Profile" EntityType="Self.User_Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_TransactionsCoin" EntityType="Self.User_TransactionsCoin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Geo_ZipCodes" EntityType="Self.Geo_ZipCodes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Geo_ZipCodes].[ZipCode] AS [ZipCode], 
+    [Geo_ZipCodes].[City] AS [City], 
+    [Geo_ZipCodes].[State] AS [State], 
+    [Geo_ZipCodes].[County] AS [County], 
+    [Geo_ZipCodes].[AreaCode] AS [AreaCode], 
+    [Geo_ZipCodes].[CityType] AS [CityType], 
+    [Geo_ZipCodes].[CityAliasAbbreviation] AS [CityAliasAbbreviation], 
+    [Geo_ZipCodes].[CityAliasName] AS [CityAliasName], 
+    [Geo_ZipCodes].[Latitude] AS [Latitude], 
+    [Geo_ZipCodes].[Longitude] AS [Longitude], 
+    [Geo_ZipCodes].[TimeZone] AS [TimeZone], 
+    [Geo_ZipCodes].[Elevation] AS [Elevation], 
+    [Geo_ZipCodes].[CountyFIPS] AS [CountyFIPS], 
+    [Geo_ZipCodes].[DayLightSaving] AS [DayLightSaving], 
+    [Geo_ZipCodes].[PreferredLastLineKey] AS [PreferredLastLineKey], 
+    [Geo_ZipCodes].[ClassificationCode] AS [ClassificationCode], 
+    [Geo_ZipCodes].[MultiCounty] AS [MultiCounty], 
+    [Geo_ZipCodes].[StateFIPS] AS [StateFIPS], 
+    [Geo_ZipCodes].[CityStateKey] AS [CityStateKey], 
+    [Geo_ZipCodes].[CityAliasCode] AS [CityAliasCode], 
+    [Geo_ZipCodes].[PrimaryRecord] AS [PrimaryRecord], 
+    [Geo_ZipCodes].[CityMixedCase] AS [CityMixedCase], 
+    [Geo_ZipCodes].[CityAliasMixedCase] AS [CityAliasMixedCase], 
+    [Geo_ZipCodes].[StateANSI] AS [StateANSI], 
+    [Geo_ZipCodes].[CountyANSI] AS [CountyANSI], 
+    [Geo_ZipCodes].[FacilityCode] AS [FacilityCode], 
+    [Geo_ZipCodes].[CityDeliveryIndicator] AS [CityDeliveryIndicator], 
+    [Geo_ZipCodes].[CarrierRouteRateSortation] AS [CarrierRouteRateSortation], 
+    [Geo_ZipCodes].[FinanceNumber] AS [FinanceNumber], 
+    [Geo_ZipCodes].[UniqueZIPName] AS [UniqueZIPName]
+    FROM [dbo].[Geo_ZipCodes] AS [Geo_ZipCodes]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eusCommonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin_ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ErrorLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Level" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsOpen" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Admin_Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Action" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Level" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsError" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Admin_ToDo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Priority" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Detail" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetRoles" ToRole="AspNetUserRoles" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetRole" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetUserRoles" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Geo_Cities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VilleId" Type="Int32" Nullable="false" />
+          <Property Name="Town" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CityPopulation" Type="Int32" />
+          <Property Name="CityAsianPopulation" Type="Int32" />
+          <Property Name="PostalCodePopulation" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Geo_Countries">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VilleId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Geo_Ville">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ville" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User_Coins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Gold" Type="Int32" />
+          <Property Name="Silver" Type="Int32" />
+          <Property Name="Bronze" Type="Int32" />
+          <Property Name="Copper" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User_Flag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlagType" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="WhereAt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User_Location">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Region" Type="Int16" />
+          <Property Name="VilleOne" Type="Int16" />
+          <Property Name="VilleTwo" Type="Int16" />
+          <Property Name="Add1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Add2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Town" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User_TransactionsCoin">
+          <Key>
+            <PropertyRef Name="TransId" />
+          </Key>
+          <Property Name="TransId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="CoinType" Type="Int32" />
+          <Property Name="TransferToUserID" Type="Int32" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="Geo_ZipCodes">
+          <Key>
+            <PropertyRef Name="ZipCode" />
+          </Key>
+          <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="County" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="AreaCode" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="CityType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CityAliasAbbreviation" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="CityAliasName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Decimal" Precision="12" Scale="6" />
+          <Property Name="Longitude" Type="Decimal" Precision="12" Scale="6" />
+          <Property Name="TimeZone" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Elevation" Type="Int32" />
+          <Property Name="CountyFIPS" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="DayLightSaving" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PreferredLastLineKey" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ClassificationCode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="MultiCounty" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="StateFIPS" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CityStateKey" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="CityAliasCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryRecord" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CityMixedCase" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="CityAliasMixedCase" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="StateANSI" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CountyANSI" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="FacilityCode" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CityDeliveryIndicator" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CarrierRouteRateSortation" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FinanceNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="UniqueZIPName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eusCommonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Admin_ErrorLog" EntityType="Self.Admin_ErrorLog" />
+          <EntitySet Name="Admin_Log" EntityType="Self.Admin_Log" />
+          <EntitySet Name="Admin_ToDo" EntityType="Self.Admin_ToDo" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRole" />
+          <EntitySet Name="Geo_Cities" EntityType="Self.Geo_Cities" />
+          <EntitySet Name="Geo_Countries" EntityType="Self.Geo_Countries" />
+          <EntitySet Name="Geo_Ville" EntityType="Self.Geo_Ville" />
+          <EntitySet Name="User_Coins" EntityType="Self.User_Coins" />
+          <EntitySet Name="User_Flag" EntityType="Self.User_Flag" />
+          <EntitySet Name="User_Location" EntityType="Self.User_Location" />
+          <EntitySet Name="User_TransactionsCoin" EntityType="Self.User_TransactionsCoin" />
+          <EntitySet Name="Geo_ZipCodes" EntityType="Self.Geo_ZipCodes" />
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <FunctionImport Name="GetLocations" ReturnType="Collection(String)" />
+          <EntitySet Name="User_Profile" EntityType="eusCommonModel.User_Profile" />
+          <EntitySet Name="AspNetUsers" EntityType="eusCommonModel.AspNetUser" />
+        </EntityContainer>
+        <EntityType Name="User_Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2Confirmed" Type="Boolean" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Birthday" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BirthYear" Type="Int32" />
+          <Property Name="ImageURL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ThumbURL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Ethnicity1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Ethnicity2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Language1" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Language2" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IsComplete" Type="Boolean" />
+          <Property Name="IsApproved" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eusCommonModelStoreContainer" CdmEntityContainer="eusCommonEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="eusCommonModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin_ErrorLog">
+            <EntityTypeMapping TypeName="eusCommonModel.Admin_ErrorLog">
+              <MappingFragment StoreEntitySet="Admin_ErrorLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="ErrorLocation" ColumnName="ErrorLocation" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin_Log">
+            <EntityTypeMapping TypeName="eusCommonModel.Admin_Log">
+              <MappingFragment StoreEntitySet="Admin_Log">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsError" ColumnName="IsError" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin_ToDo">
+            <EntityTypeMapping TypeName="eusCommonModel.Admin_ToDo">
+              <MappingFragment StoreEntitySet="Admin_ToDo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="eusCommonModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="eusCommonModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="eusCommonModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserRoles">
+            <EntityTypeMapping TypeName="eusCommonModel.AspNetUserRole">
+              <MappingFragment StoreEntitySet="AspNetUserRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geo_Cities">
+            <EntityTypeMapping TypeName="eusCommonModel.Geo_Cities">
+              <MappingFragment StoreEntitySet="Geo_Cities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CityPopulation" ColumnName="CityPopulation" />
+                <ScalarProperty Name="CityAsianPopulation" ColumnName="CityAsianPopulation" />
+                <ScalarProperty Name="PostalCodePopulation" ColumnName="PostalCodePopulation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geo_Countries">
+            <EntityTypeMapping TypeName="eusCommonModel.Geo_Countries">
+              <MappingFragment StoreEntitySet="Geo_Countries">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geo_Ville">
+            <EntityTypeMapping TypeName="eusCommonModel.Geo_Ville">
+              <MappingFragment StoreEntitySet="Geo_Ville">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Coins">
+            <EntityTypeMapping TypeName="eusCommonModel.User_Coins">
+              <MappingFragment StoreEntitySet="User_Coins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Gold" ColumnName="Gold" />
+                <ScalarProperty Name="Silver" ColumnName="Silver" />
+                <ScalarProperty Name="Bronze" ColumnName="Bronze" />
+                <ScalarProperty Name="Copper" ColumnName="Copper" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Flag">
+            <EntityTypeMapping TypeName="eusCommonModel.User_Flag">
+              <MappingFragment StoreEntitySet="User_Flag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FlagType" ColumnName="FlagType" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="WhereAt" ColumnName="WhereAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Location">
+            <EntityTypeMapping TypeName="eusCommonModel.User_Location">
+              <MappingFragment StoreEntitySet="User_Location">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="VilleOne" ColumnName="VilleOne" />
+                <ScalarProperty Name="VilleTwo" ColumnName="VilleTwo" />
+                <ScalarProperty Name="Add1" ColumnName="Add1" />
+                <ScalarProperty Name="Add2" ColumnName="Add2" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_TransactionsCoin">
+            <EntityTypeMapping TypeName="eusCommonModel.User_TransactionsCoin">
+              <MappingFragment StoreEntitySet="User_TransactionsCoin">
+                <ScalarProperty Name="TransId" ColumnName="TransId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CoinType" ColumnName="CoinType" />
+                <ScalarProperty Name="TransferToUserID" ColumnName="TransferToUserID" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geo_ZipCodes">
+            <EntityTypeMapping TypeName="eusCommonModel.Geo_ZipCodes">
+              <MappingFragment StoreEntitySet="Geo_ZipCodes">
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="CityType" ColumnName="CityType" />
+                <ScalarProperty Name="CityAliasAbbreviation" ColumnName="CityAliasAbbreviation" />
+                <ScalarProperty Name="CityAliasName" ColumnName="CityAliasName" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="Elevation" ColumnName="Elevation" />
+                <ScalarProperty Name="CountyFIPS" ColumnName="CountyFIPS" />
+                <ScalarProperty Name="DayLightSaving" ColumnName="DayLightSaving" />
+                <ScalarProperty Name="PreferredLastLineKey" ColumnName="PreferredLastLineKey" />
+                <ScalarProperty Name="ClassificationCode" ColumnName="ClassificationCode" />
+                <ScalarProperty Name="MultiCounty" ColumnName="MultiCounty" />
+                <ScalarProperty Name="StateFIPS" ColumnName="StateFIPS" />
+                <ScalarProperty Name="CityStateKey" ColumnName="CityStateKey" />
+                <ScalarProperty Name="CityAliasCode" ColumnName="CityAliasCode" />
+                <ScalarProperty Name="PrimaryRecord" ColumnName="PrimaryRecord" />
+                <ScalarProperty Name="CityMixedCase" ColumnName="CityMixedCase" />
+                <ScalarProperty Name="CityAliasMixedCase" ColumnName="CityAliasMixedCase" />
+                <ScalarProperty Name="StateANSI" ColumnName="StateANSI" />
+                <ScalarProperty Name="CountyANSI" ColumnName="CountyANSI" />
+                <ScalarProperty Name="FacilityCode" ColumnName="FacilityCode" />
+                <ScalarProperty Name="CityDeliveryIndicator" ColumnName="CityDeliveryIndicator" />
+                <ScalarProperty Name="CarrierRouteRateSortation" ColumnName="CarrierRouteRateSortation" />
+                <ScalarProperty Name="FinanceNumber" ColumnName="FinanceNumber" />
+                <ScalarProperty Name="UniqueZIPName" ColumnName="UniqueZIPName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetLocations" FunctionName="eusCommonModel.Store.GetLocations" />
+          <EntitySetMapping Name="User_Profile">
+            <EntityTypeMapping TypeName="eusCommonModel.User_Profile">
+              <MappingFragment StoreEntitySet="User_Profile">
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+                <ScalarProperty Name="Language2" ColumnName="Language2" />
+                <ScalarProperty Name="Language1" ColumnName="Language1" />
+                <ScalarProperty Name="Ethnicity2" ColumnName="Ethnicity2" />
+                <ScalarProperty Name="Ethnicity1" ColumnName="Ethnicity1" />
+                <ScalarProperty Name="ThumbURL" ColumnName="ThumbURL" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="BirthYear" ColumnName="BirthYear" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Phone2Confirmed" ColumnName="Phone2Confirmed" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="eusCommonModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

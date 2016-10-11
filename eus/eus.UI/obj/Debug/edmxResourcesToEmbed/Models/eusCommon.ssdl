@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eusCommonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Admin_ErrorLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+    <Property Name="ErrorLocation" Type="varchar" MaxLength="100" />
+    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+    <Property Name="Level" Type="varchar" MaxLength="10" />
+    <Property Name="IsOpen" Type="bit" />
+  </EntityType>
+  <EntityType Name="Admin_Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+    <Property Name="Level" Type="varchar" MaxLength="10" />
+    <Property Name="Status" Type="varchar" MaxLength="10" />
+    <Property Name="IsError" Type="bit" />
+  </EntityType>
+  <EntityType Name="Admin_ToDo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="20" />
+    <Property Name="Priority" Type="varchar" MaxLength="20" />
+    <Property Name="Detail" Type="varchar" MaxLength="2000" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="TimeStamp" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Geo_Cities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VilleId" Type="int" Nullable="false" />
+    <Property Name="Town" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="30" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="CountryCode" Type="varchar" MaxLength="3" />
+    <Property Name="CityPopulation" Type="int" />
+    <Property Name="CityAsianPopulation" Type="int" />
+    <Property Name="PostalCodePopulation" Type="int" />
+  </EntityType>
+  <EntityType Name="Geo_Countries">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VilleId" Type="int" />
+  </EntityType>
+  <EntityType Name="Geo_Ville">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ville" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'eusCommon.dbo.Geo_ZipCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Geo_ZipCodes">
+    <Key>
+      <PropertyRef Name="ZipCode" />
+    </Key>
+    <Property Name="ZipCode" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="35" />
+    <Property Name="State" Type="char" MaxLength="2" />
+    <Property Name="County" Type="varchar" MaxLength="45" />
+    <Property Name="AreaCode" Type="varchar" MaxLength="55" />
+    <Property Name="CityType" Type="char" MaxLength="1" />
+    <Property Name="CityAliasAbbreviation" Type="varchar" MaxLength="13" />
+    <Property Name="CityAliasName" Type="varchar" MaxLength="35" />
+    <Property Name="Latitude" Type="decimal" Precision="12" Scale="6" />
+    <Property Name="Longitude" Type="decimal" Precision="12" Scale="6" />
+    <Property Name="TimeZone" Type="char" MaxLength="2" />
+    <Property Name="Elevation" Type="int" />
+    <Property Name="CountyFIPS" Type="char" MaxLength="5" />
+    <Property Name="DayLightSaving" Type="char" MaxLength="1" />
+    <Property Name="PreferredLastLineKey" Type="varchar" MaxLength="10" />
+    <Property Name="ClassificationCode" Type="char" MaxLength="1" />
+    <Property Name="MultiCounty" Type="char" MaxLength="1" />
+    <Property Name="StateFIPS" Type="char" MaxLength="2" />
+    <Property Name="CityStateKey" Type="char" MaxLength="6" />
+    <Property Name="CityAliasCode" Type="varchar" MaxLength="5" />
+    <Property Name="PrimaryRecord" Type="char" MaxLength="1" />
+    <Property Name="CityMixedCase" Type="varchar" MaxLength="35" />
+    <Property Name="CityAliasMixedCase" Type="varchar" MaxLength="35" />
+    <Property Name="StateANSI" Type="varchar" MaxLength="2" />
+    <Property Name="CountyANSI" Type="varchar" MaxLength="3" />
+    <Property Name="FacilityCode" Type="varchar" MaxLength="1" />
+    <Property Name="CityDeliveryIndicator" Type="varchar" MaxLength="1" />
+    <Property Name="CarrierRouteRateSortation" Type="varchar" MaxLength="1" />
+    <Property Name="FinanceNumber" Type="varchar" MaxLength="6" />
+    <Property Name="UniqueZIPName" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="User_Coins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Gold" Type="int" />
+    <Property Name="Silver" Type="int" />
+    <Property Name="Bronze" Type="int" />
+    <Property Name="Copper" Type="int" />
+  </EntityType>
+  <EntityType Name="User_Flag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FlagType" Type="int" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Notes" Type="varchar(max)" />
+    <Property Name="WhereAt" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User_Location">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Region" Type="smallint" />
+    <Property Name="VilleOne" Type="smallint" />
+    <Property Name="VilleTwo" Type="smallint" />
+    <Property Name="Add1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Add2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Town" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="CountryCode" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="User_Profile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="60" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="30" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone2" Type="varchar" MaxLength="30" />
+    <Property Name="Phone2Confirmed" Type="bit" />
+    <Property Name="Gender" Type="char" MaxLength="1" />
+    <Property Name="Birthday" Type="varchar" MaxLength="10" />
+    <Property Name="BirthYear" Type="int" />
+    <Property Name="ImageURL" Type="varchar" MaxLength="200" />
+    <Property Name="ThumbURL" Type="varchar" MaxLength="200" />
+    <Property Name="Ethnicity1" Type="varchar" MaxLength="30" />
+    <Property Name="Ethnicity2" Type="varchar" MaxLength="30" />
+    <Property Name="Language1" Type="varchar" MaxLength="5" />
+    <Property Name="Language2" Type="varchar" MaxLength="5" />
+    <Property Name="IsComplete" Type="bit" />
+    <Property Name="IsApproved" Type="bit" />
+  </EntityType>
+  <EntityType Name="User_TransactionsCoin">
+    <Key>
+      <PropertyRef Name="TransId" />
+    </Key>
+    <Property Name="TransId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="CoinType" Type="int" />
+    <Property Name="TransferToUserID" Type="int" Nullable="false" />
+    <Property Name="Details" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Timestamp" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="eusCommonModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin_ErrorLog" EntityType="Self.Admin_ErrorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin_Log" EntityType="Self.Admin_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin_ToDo" EntityType="Self.Admin_ToDo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Geo_Cities" EntityType="Self.Geo_Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Geo_Countries" EntityType="Self.Geo_Countries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Geo_Ville" EntityType="Self.Geo_Ville" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Coins" EntityType="Self.User_Coins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Flag" EntityType="Self.User_Flag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Location" EntityType="Self.User_Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Profile" EntityType="Self.User_Profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_TransactionsCoin" EntityType="Self.User_TransactionsCoin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Geo_ZipCodes" EntityType="Self.Geo_ZipCodes" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Geo_ZipCodes].[ZipCode] AS [ZipCode], 
+    [Geo_ZipCodes].[City] AS [City], 
+    [Geo_ZipCodes].[State] AS [State], 
+    [Geo_ZipCodes].[County] AS [County], 
+    [Geo_ZipCodes].[AreaCode] AS [AreaCode], 
+    [Geo_ZipCodes].[CityType] AS [CityType], 
+    [Geo_ZipCodes].[CityAliasAbbreviation] AS [CityAliasAbbreviation], 
+    [Geo_ZipCodes].[CityAliasName] AS [CityAliasName], 
+    [Geo_ZipCodes].[Latitude] AS [Latitude], 
+    [Geo_ZipCodes].[Longitude] AS [Longitude], 
+    [Geo_ZipCodes].[TimeZone] AS [TimeZone], 
+    [Geo_ZipCodes].[Elevation] AS [Elevation], 
+    [Geo_ZipCodes].[CountyFIPS] AS [CountyFIPS], 
+    [Geo_ZipCodes].[DayLightSaving] AS [DayLightSaving], 
+    [Geo_ZipCodes].[PreferredLastLineKey] AS [PreferredLastLineKey], 
+    [Geo_ZipCodes].[ClassificationCode] AS [ClassificationCode], 
+    [Geo_ZipCodes].[MultiCounty] AS [MultiCounty], 
+    [Geo_ZipCodes].[StateFIPS] AS [StateFIPS], 
+    [Geo_ZipCodes].[CityStateKey] AS [CityStateKey], 
+    [Geo_ZipCodes].[CityAliasCode] AS [CityAliasCode], 
+    [Geo_ZipCodes].[PrimaryRecord] AS [PrimaryRecord], 
+    [Geo_ZipCodes].[CityMixedCase] AS [CityMixedCase], 
+    [Geo_ZipCodes].[CityAliasMixedCase] AS [CityAliasMixedCase], 
+    [Geo_ZipCodes].[StateANSI] AS [StateANSI], 
+    [Geo_ZipCodes].[CountyANSI] AS [CountyANSI], 
+    [Geo_ZipCodes].[FacilityCode] AS [FacilityCode], 
+    [Geo_ZipCodes].[CityDeliveryIndicator] AS [CityDeliveryIndicator], 
+    [Geo_ZipCodes].[CarrierRouteRateSortation] AS [CarrierRouteRateSortation], 
+    [Geo_ZipCodes].[FinanceNumber] AS [FinanceNumber], 
+    [Geo_ZipCodes].[UniqueZIPName] AS [UniqueZIPName]
+    FROM [dbo].[Geo_ZipCodes] AS [Geo_ZipCodes]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

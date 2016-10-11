@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eusVilleModelStoreContainer" CdmEntityContainer="eusVilleEntities">
+    <EntitySetMapping Name="Cork_HousingType">
+      <EntityTypeMapping TypeName="eusVilleModel.Cork_HousingType">
+        <MappingFragment StoreEntitySet="Cork_HousingType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="eusVilleModel.Image">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="TypePostID" ColumnName="TypePostID" />
+          <ScalarProperty Name="ImageMain" ColumnName="ImageMain" />
+          <ScalarProperty Name="ImageCount" ColumnName="ImageCount" />
+          <ScalarProperty Name="Orig1" ColumnName="Orig1" />
+          <ScalarProperty Name="Orig2" ColumnName="Orig2" />
+          <ScalarProperty Name="Orig3" ColumnName="Orig3" />
+          <ScalarProperty Name="Orig4" ColumnName="Orig4" />
+          <ScalarProperty Name="Orig5" ColumnName="Orig5" />
+          <ScalarProperty Name="Orig6" ColumnName="Orig6" />
+          <ScalarProperty Name="Orig7" ColumnName="Orig7" />
+          <ScalarProperty Name="Orig8" ColumnName="Orig8" />
+          <ScalarProperty Name="Thumb1" ColumnName="Thumb1" />
+          <ScalarProperty Name="Thumb2" ColumnName="Thumb2" />
+          <ScalarProperty Name="Thumb3" ColumnName="Thumb3" />
+          <ScalarProperty Name="Thumb4" ColumnName="Thumb4" />
+          <ScalarProperty Name="Thumb5" ColumnName="Thumb5" />
+          <ScalarProperty Name="Thumb6" ColumnName="Thumb6" />
+          <ScalarProperty Name="Thumb7" ColumnName="Thumb7" />
+          <ScalarProperty Name="Thumb8" ColumnName="Thumb8" />
+          <ScalarProperty Name="Display1" ColumnName="Display1" />
+          <ScalarProperty Name="Display2" ColumnName="Display2" />
+          <ScalarProperty Name="Display3" ColumnName="Display3" />
+          <ScalarProperty Name="Display4" ColumnName="Display4" />
+          <ScalarProperty Name="Display5" ColumnName="Display5" />
+          <ScalarProperty Name="Display6" ColumnName="Display6" />
+          <ScalarProperty Name="Display7" ColumnName="Display7" />
+          <ScalarProperty Name="Display8" ColumnName="Display8" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cork_Category">
+      <EntityTypeMapping TypeName="eusVilleModel.Cork_Category">
+        <MappingFragment StoreEntitySet="Cork_Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cork_PostHousing">
+      <EntityTypeMapping TypeName="eusVilleModel.Cork_PostHousing">
+        <MappingFragment StoreEntitySet="Cork_PostHousing">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CatID" ColumnName="CatID" />
+          <ScalarProperty Name="SubCatID" ColumnName="SubCatID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="LocationTown" ColumnName="LocationTown" />
+          <ScalarProperty Name="LocationCity" ColumnName="LocationCity" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Zip4" ColumnName="Zip4" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="VilleID" ColumnName="VilleID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="AdType" ColumnName="AdType" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Beds" ColumnName="Beds" />
+          <ScalarProperty Name="Bath" ColumnName="Bath" />
+          <ScalarProperty Name="Laundry" ColumnName="Laundry" />
+          <ScalarProperty Name="Parking" ColumnName="Parking" />
+          <ScalarProperty Name="SquareFt" ColumnName="SquareFt" />
+          <ScalarProperty Name="Furnished" ColumnName="Furnished" />
+          <ScalarProperty Name="CatsOk" ColumnName="CatsOk" />
+          <ScalarProperty Name="DogsOk" ColumnName="DogsOk" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Expired" ColumnName="Expired" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetCategories" FunctionName="eusVilleModel.Store.GetCategories" />
+    <FunctionImportMapping FunctionImportName="GetHousingType" FunctionName="eusVilleModel.Store.GetHousingType" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<eus.UI.Models.Topic>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>eusVote <span style="font-size:x-large"> ... the collective wisdom of everyone under the sun</span></h1>
+<br />
+
+
+<div>
+    <span style="width:180px; float:left; font-size:x-large">Trending Topics</span>
+    <span style="width:200px; float:left; padding-top: 11px; font-size:small">
+        @if (Convert.ToInt32(ViewBag.UserID) == 0)
+        {
+            <p>@Html.ActionLink("(Log in to create a Topic)", "Login", new { area = "", controller = "Account" })</p>
+        }
+        else
+        {
+            <p>@Html.ActionLink("(Create New)", "Create", new { area = "Vote", controller = "Topic" })</p>
+        }
+    </span>
+</div>
+
+<br style="clear:both" /><br />
+
+@foreach (var topic in Model)
+{
+    @*<h4><a href="Vote/@topic.TopicID/@topic.TopicURL">@topic.Topic1 +</a></h4><br />*@
+    <h4><a href="Vote/@topic.TopicTitleURL/@topic.TopicID">@topic.Topic1 <span style="font-size:smaller">(@topic.AnswerCount)</span></a></h4><br />
+}

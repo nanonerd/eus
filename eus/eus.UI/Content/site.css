@@ -1,0 +1,169 @@
+﻿html{
+    overflow-y: scroll;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/*Set padding to keep content from hitting the edges*/ 
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    min-height:600px;
+}
+
+footer{
+    text-align: center;
+    font-size: smaller;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+
+select
+{
+    max-width: 250px;
+}
+
+input
+{
+    max-width: 600px;
+}
+
+/* Classes */
+.alignCenter
+{
+    text-align: center;
+}
+
+
+/******************************** eusVote Add Answer */
+#answer-ratingScore{
+    max-width:60px;
+}
+
+#answer-shareThoughts{        
+    max-width:500px;
+    max-height:180px;
+}
+
+
+/*h4 {
+    background-color: ActiveCaption
+}*/
+
+/******************************** Common components */
+.buttonRatingSubmit{
+    width: 90px;
+    height: 35px;    
+}
+
+.buttonCancel{ 
+    vertical-align: bottom;
+}
+
+
+/******************************** eusVote Topic Answers */
+.answer-comment{
+    width:600px;
+    /*padding: 15px;*/
+    float: left;
+}
+.answer-commentRateBox{
+    /*display:none; */
+    overflow: hidden;   
+}
+.answer-container{
+    padding: 15px;    
+}
+.answer-displayComments{
+    /*width: 900px;
+    overflow: hidden;*/
+}
+.answer-eusScore{    
+    width: 100px;
+    /*padding: 10px;*/
+    float: left;
+}
+.answer-main{
+    width: 600px;
+    /*padding: 15px;*/
+    float: left;
+}
+.answer-rateIt{
+    width: 450px;
+    /*padding: 15px;*/
+    float: left;    
+}
+.answer-review{
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    margin-right: 20px;
+    /*margin-left: 10px; */
+    width: 450px;
+    /* height: 180px; */
+    float: left;
+    border: 1px solid green;
+}
+.answer-textArea{
+    width: 500px;
+    height: 120px;  
+    padding: 5px 10px 5px 10px;  
+}
+.answer-thankYou{
+    padding: 8px;
+    display: none;
+    text-align: center;
+    width: 180px;
+    background-color: rgba(5, 178, 5, 0.34);
+    color: #353232;
+    font-weight: 500;
+    float: left;
+}
+.answer-submitMessage{
+    display:none;
+    height: 40px;
+    background-color: #d0f7d0;
+    padding-top: 10px; 
+    width: 70%;
+    text-align: center;       
+    border: 1px solid #40bd40;            
+}
+.answer-yourScore{    
+    width: 100px;
+    /*padding: 10px;*/
+    float: left;
+}
+
+.buttonRateComment{
+    width: 120px;
+    display: none;
+}
+
+/******************************** Comment components */
+.commentBox{
+    
+}
+
+.commentBoxLeft{
+    width: 80px;
+    background-color: yellow;
+    float: left;
+}
+
+.commentBoxRight{
+    /*margin-left: 60px; */
+    padding: 20px;
+    width: 800px;
+    float: left;
+    background-color: #d0f7d0;
+}

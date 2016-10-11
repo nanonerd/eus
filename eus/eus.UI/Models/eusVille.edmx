@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="eusVilleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eusVille.dbo.Cork_Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Cork_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Category" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SubCategory" Type="nvarchar" MaxLength="20" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Cork_HousingType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eusVille.dbo.Cork_PostHousing' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Cork_PostHousing">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Details" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CatID" Type="int" />
+          <Property Name="SubCatID" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="LocationTown" Type="nvarchar" MaxLength="50" />
+          <Property Name="LocationCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip" Type="int" />
+          <Property Name="Zip4" Type="int" />
+          <Property Name="Country" Type="varchar" MaxLength="3" />
+          <Property Name="VilleID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Details" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AdType" Type="varchar" MaxLength="20" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="Beds" Type="varchar" MaxLength="10" />
+          <Property Name="Bath" Type="varchar" MaxLength="10" />
+          <Property Name="Laundry" Type="varchar" MaxLength="20" />
+          <Property Name="Parking" Type="varchar" MaxLength="20" />
+          <Property Name="SquareFt" Type="int" />
+          <Property Name="Furnished" Type="bit" />
+          <Property Name="CatsOk" Type="bit" />
+          <Property Name="DogsOk" Type="bit" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Expired" Type="bit" />
+          <Property Name="Flag" Type="bit" />
+          <Property Name="TimeStamp" Type="datetime2" Precision="7" />
+          <Property Name="Views" Type="int" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="TypePostID" Type="bigint" />
+          <Property Name="ImageMain" Type="int" />
+          <Property Name="ImageCount" Type="int" />
+          <Property Name="Orig1" Type="varchar" MaxLength="200" />
+          <Property Name="Orig2" Type="varchar" MaxLength="200" />
+          <Property Name="Orig3" Type="varchar" MaxLength="200" />
+          <Property Name="Orig4" Type="varchar" MaxLength="200" />
+          <Property Name="Orig5" Type="varchar" MaxLength="200" />
+          <Property Name="Orig6" Type="varchar" MaxLength="200" />
+          <Property Name="Orig7" Type="varchar" MaxLength="200" />
+          <Property Name="Orig8" Type="varchar" MaxLength="200" />
+          <Property Name="Thumb1" Type="varchar" MaxLength="200" />
+          <Property Name="Thumb2" Type="varchar" MaxLength="200" />
+          <Property Name="Thumb3" Type="varchar" MaxLength="200" />
+          <Property Name="Thumb4" Type="varchar" MaxLength="200" />
+          <Property Name="Thumb5" Type="varchar" MaxLength="200" />
+          <Property Name="Thumb6" Type="varchar" MaxLength="200" />
+          <Property Name="Thumb7" Type="varchar" MaxLength="200" />
+          <Property Name="Thumb8" Type="varchar" MaxLength="200" />
+          <Property Name="Display1" Type="varchar" MaxLength="200" />
+          <Property Name="Display2" Type="varchar" MaxLength="200" />
+          <Property Name="Display3" Type="varchar" MaxLength="200" />
+          <Property Name="Display4" Type="varchar" MaxLength="200" />
+          <Property Name="Display5" Type="varchar" MaxLength="200" />
+          <Property Name="Display6" Type="varchar" MaxLength="200" />
+          <Property Name="Display7" Type="varchar" MaxLength="200" />
+          <Property Name="Display8" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Function Name="GetCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetHousingType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="eusVilleModelStoreContainer">
+          <EntitySet Name="Cork_HousingType" EntityType="Self.Cork_HousingType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cork_Category" EntityType="Self.Cork_Category" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Cork_Category].[Id] AS [Id], 
+    [Cork_Category].[Category] AS [Category], 
+    [Cork_Category].[SubCategory] AS [SubCategory], 
+    [Cork_Category].[Active] AS [Active]
+    FROM [dbo].[Cork_Category] AS [Cork_Category]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Cork_PostHousing" EntityType="Self.Cork_PostHousing" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Cork_PostHousing].[Id] AS [Id], 
+    [Cork_PostHousing].[UserID] AS [UserID], 
+    [Cork_PostHousing].[CatID] AS [CatID], 
+    [Cork_PostHousing].[SubCatID] AS [SubCatID], 
+    [Cork_PostHousing].[Address] AS [Address], 
+    [Cork_PostHousing].[LocationTown] AS [LocationTown], 
+    [Cork_PostHousing].[LocationCity] AS [LocationCity], 
+    [Cork_PostHousing].[Zip] AS [Zip], 
+    [Cork_PostHousing].[Zip4] AS [Zip4], 
+    [Cork_PostHousing].[Country] AS [Country], 
+    [Cork_PostHousing].[VilleID] AS [VilleID], 
+    [Cork_PostHousing].[Title] AS [Title], 
+    [Cork_PostHousing].[Details] AS [Details], 
+    [Cork_PostHousing].[Price] AS [Price], 
+    [Cork_PostHousing].[AdType] AS [AdType], 
+    [Cork_PostHousing].[Type] AS [Type], 
+    [Cork_PostHousing].[Beds] AS [Beds], 
+    [Cork_PostHousing].[Bath] AS [Bath], 
+    [Cork_PostHousing].[Laundry] AS [Laundry], 
+    [Cork_PostHousing].[Parking] AS [Parking], 
+    [Cork_PostHousing].[SquareFt] AS [SquareFt], 
+    [Cork_PostHousing].[Furnished] AS [Furnished], 
+    [Cork_PostHousing].[CatsOk] AS [CatsOk], 
+    [Cork_PostHousing].[DogsOk] AS [DogsOk], 
+    [Cork_PostHousing].[Active] AS [Active], 
+    [Cork_PostHousing].[Expired] AS [Expired], 
+    [Cork_PostHousing].[Flag] AS [Flag], 
+    [Cork_PostHousing].[TimeStamp] AS [TimeStamp], 
+    [Cork_PostHousing].[Views] AS [Views]
+    FROM [dbo].[Cork_PostHousing] AS [Cork_PostHousing]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eusVilleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cork_HousingType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TypePostID" Type="Int64" />
+          <Property Name="ImageMain" Type="Int32" />
+          <Property Name="ImageCount" Type="Int32" />
+          <Property Name="Orig1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Orig2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Orig3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Orig4" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Orig5" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Orig6" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Orig7" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Orig8" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Thumb1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Thumb2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Thumb3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Thumb4" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Thumb5" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Thumb6" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Thumb7" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Thumb8" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Display1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Display2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Display3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Display4" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Display5" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Display6" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Display7" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Display8" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cork_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Category" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Cork_PostHousing">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Details" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CatID" Type="Int32" />
+          <Property Name="SubCatID" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LocationTown" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LocationCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="Int32" />
+          <Property Name="Zip4" Type="Int32" />
+          <Property Name="Country" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="VilleID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AdType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Beds" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Bath" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Laundry" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Parking" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SquareFt" Type="Int32" />
+          <Property Name="Furnished" Type="Boolean" />
+          <Property Name="CatsOk" Type="Boolean" />
+          <Property Name="DogsOk" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Expired" Type="Boolean" />
+          <Property Name="Flag" Type="Boolean" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="7" />
+          <Property Name="Views" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="eusVilleEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cork_HousingType" EntityType="Self.Cork_HousingType" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="Cork_Category" EntityType="Self.Cork_Category" />
+          <EntitySet Name="Cork_PostHousing" EntityType="Self.Cork_PostHousing" />
+          <FunctionImport Name="GetCategories" />
+          <FunctionImport Name="GetHousingType" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eusVilleModelStoreContainer" CdmEntityContainer="eusVilleEntities">
+          <EntitySetMapping Name="Cork_HousingType">
+            <EntityTypeMapping TypeName="eusVilleModel.Cork_HousingType">
+              <MappingFragment StoreEntitySet="Cork_HousingType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="eusVilleModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TypePostID" ColumnName="TypePostID" />
+                <ScalarProperty Name="ImageMain" ColumnName="ImageMain" />
+                <ScalarProperty Name="ImageCount" ColumnName="ImageCount" />
+                <ScalarProperty Name="Orig1" ColumnName="Orig1" />
+                <ScalarProperty Name="Orig2" ColumnName="Orig2" />
+                <ScalarProperty Name="Orig3" ColumnName="Orig3" />
+                <ScalarProperty Name="Orig4" ColumnName="Orig4" />
+                <ScalarProperty Name="Orig5" ColumnName="Orig5" />
+                <ScalarProperty Name="Orig6" ColumnName="Orig6" />
+                <ScalarProperty Name="Orig7" ColumnName="Orig7" />
+                <ScalarProperty Name="Orig8" ColumnName="Orig8" />
+                <ScalarProperty Name="Thumb1" ColumnName="Thumb1" />
+                <ScalarProperty Name="Thumb2" ColumnName="Thumb2" />
+                <ScalarProperty Name="Thumb3" ColumnName="Thumb3" />
+                <ScalarProperty Name="Thumb4" ColumnName="Thumb4" />
+                <ScalarProperty Name="Thumb5" ColumnName="Thumb5" />
+                <ScalarProperty Name="Thumb6" ColumnName="Thumb6" />
+                <ScalarProperty Name="Thumb7" ColumnName="Thumb7" />
+                <ScalarProperty Name="Thumb8" ColumnName="Thumb8" />
+                <ScalarProperty Name="Display1" ColumnName="Display1" />
+                <ScalarProperty Name="Display2" ColumnName="Display2" />
+                <ScalarProperty Name="Display3" ColumnName="Display3" />
+                <ScalarProperty Name="Display4" ColumnName="Display4" />
+                <ScalarProperty Name="Display5" ColumnName="Display5" />
+                <ScalarProperty Name="Display6" ColumnName="Display6" />
+                <ScalarProperty Name="Display7" ColumnName="Display7" />
+                <ScalarProperty Name="Display8" ColumnName="Display8" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cork_Category">
+            <EntityTypeMapping TypeName="eusVilleModel.Cork_Category">
+              <MappingFragment StoreEntitySet="Cork_Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cork_PostHousing">
+            <EntityTypeMapping TypeName="eusVilleModel.Cork_PostHousing">
+              <MappingFragment StoreEntitySet="Cork_PostHousing">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+                <ScalarProperty Name="SubCatID" ColumnName="SubCatID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LocationTown" ColumnName="LocationTown" />
+                <ScalarProperty Name="LocationCity" ColumnName="LocationCity" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Zip4" ColumnName="Zip4" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="VilleID" ColumnName="VilleID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="AdType" ColumnName="AdType" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Beds" ColumnName="Beds" />
+                <ScalarProperty Name="Bath" ColumnName="Bath" />
+                <ScalarProperty Name="Laundry" ColumnName="Laundry" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="SquareFt" ColumnName="SquareFt" />
+                <ScalarProperty Name="Furnished" ColumnName="Furnished" />
+                <ScalarProperty Name="CatsOk" ColumnName="CatsOk" />
+                <ScalarProperty Name="DogsOk" ColumnName="DogsOk" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Expired" ColumnName="Expired" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetCategories" FunctionName="eusVilleModel.Store.GetCategories" />
+          <FunctionImportMapping FunctionImportName="GetHousingType" FunctionName="eusVilleModel.Store.GetHousingType" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
